@@ -9,7 +9,9 @@ app.set("views", path.join(__dirname, "views"));
 
 app.get("/", async (req, res) => {
   try {
-    const response = await fetch("http://localhost:5000/api");
+    const response = process.env.BACKEND_URL
+      ? await fetch(process.env.BACKEND_URL)
+      : await fetch("http://localhost:5000/api");
     const result = await response.json();
     res.render("index", { data: result.data, error: null });
   } catch (error) {
