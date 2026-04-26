@@ -1,6 +1,8 @@
+import os
+
 def getdata():
-    with open('test.txt', 'r') as file:
+    filepath = os.path.join(os.path.dirname(__file__), 'test.txt')
+    with open(filepath, 'r') as file:
         data = file.read()
-        data=data.split()
-        
-    return {"data": data}
+        data = data.split()
+    return data
