@@ -1,9 +1,16 @@
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify
 from flask_cors import CORS
 from business import getdata
 
 app = Flask(__name__)
 CORS(app)
+
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({
+        "message": "Backend is running",
+        "endpoints": ["/api"]
+    })
 
 @app.route('/api', methods=['GET'])
 def api():
