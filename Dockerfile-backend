@@ -1,10 +1,14 @@
 FROM python:3.11-slim
 
-ADD backend/requirements.txt /app/requirements.txt
+WORKDIR /app
+
+COPY Backend/requirements.txt /app/requirements.txt
 
 RUN pip install -r /app/requirements.txt
 
-ADD backend /app
+COPY Backend /app
+
+EXPOSE 5000
 
 ENTRYPOINT [ "python" ]
 
